@@ -1,0 +1,9 @@
+
+{% block content %}
+    <h2>Pokemons</h2>
+    <ul>
+        {% for pokemon in object_list %}
+            <li>{{ pokemon.name }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
