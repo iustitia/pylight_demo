@@ -1,9 +1,30 @@
 
+
+{% extends 'pokedex/base.html' %}
+
 {% block content %}
-    <h2>Pokemons</h2>
-    <ul>
+
+<div class="table-users">
+   <div class="header">Pokemons</div>
+
+   <table cellspacing="0">
+      <tr>
+         <th>Picture</th>
+         <th>Name</th>
+         <th>Is yellow?</th>
+         <!--<th></th>-->
+         <!--<th width="230">Comments</th>-->
+      </tr>
+       <tr>
         {% for pokemon in object_list %}
-            <li>{{ pokemon.name }}</li>
+         <td><img src="http://lorempixel.com/100/100/abstract/" alt="" /></td>
+         <td>{{ pokemon.name }}</td>
+         <td>{% if pokemon.is_yellow %}Yes{% else %}No{% endif %}</td>
+         <!--<td></td>-->
+         <!--<td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </td>-->
         {% endfor %}
-    </ul>
+      </tr>
+
+   </table>
+</div>
 {% endblock %}
