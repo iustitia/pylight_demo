@@ -3,6 +3,7 @@
 {% extends 'pokedex/base.html' %}
 
 {% block content %}
+{% load static %}
 
 <div class="table-users">
    <div class="header">Pokemons</div>
@@ -15,15 +16,16 @@
          <!--<th></th>-->
          <!--<th width="230">Comments</th>-->
       </tr>
-       <tr>
-        {% for pokemon in object_list %}
-         <td><img src="http://lorempixel.com/100/100/abstract/" alt="" /></td>
+
+      {% for pokemon in object_list %}
+      <tr>
+         <td><img src="{% static 'pokedex/pokeball.png' %}" alt="" /></td>
          <td>{{ pokemon.name }}</td>
          <td>{% if pokemon.is_yellow %}Yes{% else %}No{% endif %}</td>
          <!--<td></td>-->
          <!--<td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </td>-->
-        {% endfor %}
       </tr>
+      {% endfor %}
 
    </table>
 </div>
