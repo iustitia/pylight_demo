@@ -26,3 +26,14 @@ pokemon_list = [Pokemon(name="Magikarp", is_yellow=False, date_added=datetime(20
 ######
 
 Pokemon.objects.filter(date_added__year=2015)
+
+
+######
+
+class Trainer(models.Model):
+    name = models.CharField(max_length=200)
+
+
+class Pokemon:
+    # ....
+    trainer = models.ForeignKey(Trainer, on_delete=models.DO_NOTHING, blank=True, null=True)
