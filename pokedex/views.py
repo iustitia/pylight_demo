@@ -1,10 +1,38 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
 # Create your views here.
-from django.views.generic import ListView
+from django.views.generic import ListView, CreateView, DetailView
 
+from pokedex.forms import AddForm
 from .models import Pokemon
 
 
 class PokemonListView(ListView):
     model = Pokemon
+
+
+class PokemonDetailView(DetailView):
+    model = Pokemon
+
+
+def add_new_manually(request):
+    if request.method == "POST":
+        form = AddForm(request.POST)
+
+        if form.is_valid():
+            # time for magic ...
+            # p = Pokemon(name=form.cleaned_data['name'],
+            #             is_yellow=form.cleaned_data['is_yellow'])
+            # p.save()
+            return HttpResponseRedirect('/')
+
+    else:
+        form = AddForm()
+
+    return render(request, "pokedex/add.html", {'form': form})
+
+
+class AddCreateView(CreateView):
+    model = Pokemon
+    fields = '__all__'

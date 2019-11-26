@@ -1,0 +1,10 @@
+{% extends 'pokedex/base.html' %}
+
+{% block content %}
+{% load static %}
+
+ <p><img src="{% static 'pokedex/pokeball.png' %}" alt="" /></p>
+ <p>{{ pokemon.name }}</p>
+ <p>{% if pokemon.is_yellow %}Yes{% else %}No{% endif %}</p>
+
+{% endblock %}
