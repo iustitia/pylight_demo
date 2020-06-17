@@ -22,9 +22,10 @@ def add_new_manually(request):
 
         if form.is_valid():
             # time for magic ...
-            # p = Pokemon(name=form.cleaned_data['name'],
-            #             is_yellow=form.cleaned_data['is_yellow'])
-            # p.save()
+            p = Pokemon(name=form.cleaned_data['name'],
+                        is_yellow=form.cleaned_data['is_yellow'])
+            p.save()
+
             return HttpResponseRedirect('/')
 
     else:
@@ -36,3 +37,11 @@ def add_new_manually(request):
 class AddCreateView(CreateView):
     model = Pokemon
     fields = '__all__'
+
+
+def check_date(request, pokemon_id):
+    if request.method == "GET":
+        pokemon = Pokemon.objects.get(id=pokemon_id)
+        is_older_than_days = 7
+
+        return render(request, "pokedex/check_date.html", {"is_older_than": pokemon.check_date(is_older_than_days)})
