@@ -1,4 +1,4 @@
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, Http404
 from django.shortcuts import render
 
 # Create your views here.
@@ -41,7 +41,10 @@ class AddCreateView(CreateView):
 
 def check_date(request, pokemon_id):
     if request.method == "GET":
-        pokemon = Pokemon.objects.get(id=pokemon_id)
+        try:
+            pokemon = Pokemon.objects.get(id=pokemon_id)
+        except Pokemon.DoesNotExist:
+            raise Http404("Pokemon with this id does not exist")
         is_older_than_days = 7
 
         return render(request, "pokedex/check_date.html", {"is_older_than": pokemon.check_date(is_older_than_days)})

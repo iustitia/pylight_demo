@@ -8,7 +8,7 @@ class Trainer(models.Model):
 class Pokemon(models.Model):
     name = models.CharField(max_length=200)
     is_yellow = models.BooleanField(default=False)
-    date_added = models.DateField(null=True, blank=True)
+    date_added = models.DateField(null=True, blank=True, auto_now=True)
     trainer = models.ForeignKey(Trainer, on_delete=None, null=True, blank=True)
 
     def __str__(self):
