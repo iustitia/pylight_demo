@@ -30,6 +30,6 @@ urlpatterns = format_suffix_patterns(urlpatterns)
 
 # with viewsets
 router = DefaultRouter()
-router.register(r'api/v3/pokemon', viewsets.PokemonListAPIViewSet)
+router.register(r'api/v3/pokemon', viewsets.PokemonAPIViewSet)
 
 urlpatterns += router.urls

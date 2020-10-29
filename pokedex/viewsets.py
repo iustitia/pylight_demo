@@ -28,9 +28,10 @@ class PokemonListAPIView(ListAPIView):
     serializer_class = serializers.PokemonModelSerializer
 
 
-class PokemonListAPIViewSet(viewsets.ModelViewSet):
+class PokemonAPIViewSet(viewsets.ModelViewSet):
     """
     Uses viewsets that automatically create CRUD style endpoint for a model
     """
     serializer_class = serializers.PokemonModelSerializer
     queryset = Pokemon.objects.all()
+    http_method_names = ["get"]
