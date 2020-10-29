@@ -34,4 +34,3 @@ class PokemonAPIViewSet(viewsets.ModelViewSet):
     """
     serializer_class = serializers.PokemonModelSerializer
     queryset = Pokemon.objects.all()
-    http_method_names = ["get"]
