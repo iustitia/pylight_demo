@@ -7,7 +7,7 @@ from . import views
 from . import viewsets
 
 urlpatterns = [
-    path('pokemon', views.PokemonListView.as_view()),
+    path('admin/', views.PokemonListView.as_view()),
     path('<int:pk>/', views.PokemonDetailView.as_view(), name="detail-view"),
 
     path('add_manually', views.add_new_manually),
@@ -23,6 +23,10 @@ urlpatterns = [
 
     # with model serializer
     path('api/v2/pokemon/', viewsets.PokemonListAPIView.as_view(queryset=Pokemon.objects.all()), name="pokemons"),
+
+
+    # search filter:
+    path('api/v4/pokemon/', viewsets.PokemonSearchListView.as_view(), name="pokemons"),
 
 ]
 
